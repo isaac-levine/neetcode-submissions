@@ -1,0 +1,9 @@
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+
+        # "find the subarray and..." is kind of misleading because all we care about is the actual sum, not the subarray itself
+        cur = res = nums[0] # what if all negative numbers? can't start with 0  
+        for num in nums[1:]:
+            cur = max(cur + num, num) # choice: extend contiguous subarray, or reset.
+            res = max(res, cur)
+        return res
